@@ -13,6 +13,8 @@ function App() {
     })
   }
 
+  console.log("users list",usersList)
+
   return (
     <div >
 
