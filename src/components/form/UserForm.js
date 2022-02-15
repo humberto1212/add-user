@@ -10,20 +10,33 @@ export default function UserForm(props) {
     const [newAge, setNewAge] = useState('')
   
     const handleName = (event) => {
-        
         return setNewName(event.target.value)
     }
 
     const handleAge = (event) => {
         return setNewAge(event.target.value) 
     }
-  
-
     
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(newName)
-        console.log(newAge)
+
+        let guid = () => {
+            let s4 = () => {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1);
+            }
+            //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+        }
+
+        let user = {
+            name: newName,
+            age: newAge,
+            id: guid()
+        }
+
+        props.onAddUser(user)
     }   
 
 
