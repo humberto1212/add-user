@@ -13,6 +13,11 @@ function App() {
     })
   }
 
+  const handleDelete = (id) => {
+    const newList = usersList.filter((user) => {return user.id != id})
+    setUsersList(newList)
+  }
+
   console.log("users list",usersList)
 
   return (
@@ -24,6 +29,7 @@ function App() {
 
        <UserList
         onUsersList={usersList}
+        onHandleDelete={handleDelete}
        /> 
     </div>
   );

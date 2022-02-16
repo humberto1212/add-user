@@ -16,7 +16,7 @@ export default function User(props) {
             <List>
                 <ListItem
                   secondaryAction={
-                    <IconButton edge="end" aria-label="delete">
+                    <IconButton onClick={() => props.onHandleDelete(props.onId)} edge="end" aria-label="delete">
                       <DeleteIcon />
                     </IconButton>
                   }

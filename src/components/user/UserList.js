@@ -8,7 +8,7 @@ export default function UserList(props) {
         props.onUsersList.map((user) => {
           return (
             <div key={user.id}>
-              <User onName={user.name} onAge={user.age} />
+              <User onId={user.id} onName={user.name} onAge={user.age} onHandleDelete={props.onHandleDelete} />
             </div>
             
           )
