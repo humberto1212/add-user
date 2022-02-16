@@ -5,9 +5,9 @@ export default function UserList(props) {
   return (
     <div>
       {
-        props.onUsersList.map((user, id) => {
+        props.onUsersList.map((user) => {
           return (
-            <div key={id}>
+            <div key={user.id}>
               <User onName={user.name} onAge={user.age} />
             </div>
             
