@@ -13,11 +13,11 @@ export default function User(props) {
 
   return (
     <>
-            <List>
+            <List style={{backgroundColor:'#FFF1D0', margin: 10, borderRadius: 10}}>
                 <ListItem
                   secondaryAction={
                     <IconButton onClick={() => props.onHandleDelete(props.onId)} edge="end" aria-label="delete">
-                      <DeleteIcon />
+                      <DeleteIcon color='secundary'/>
                     </IconButton>
                   }
                 >

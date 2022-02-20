@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button'
+//import AlertMessage from '../alerts/AlertMessage';
+import User from '../user/User';
 
 
 export default function UserForm(props) {
@@ -36,7 +38,10 @@ export default function UserForm(props) {
             id: guid()
         }
 
-        props.onAddUser(user)
+    
+            props.onAddUser(user)
+        
+       
     }   
 
 
