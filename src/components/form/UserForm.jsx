@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button'
 import AlertMessage from '../alerts/AlertMessage';
+import  Wrapper from '../helpers/Wrapper'
 
 export default function UserForm(props) {
 
@@ -40,6 +41,9 @@ export default function UserForm(props) {
         if(user.name === '' || user.age === ''){
             setAlert('send a warning')
             return false
+        }else if(+user.age <= 0){
+            setAlert('send a warning')
+            return false
         }else{
             setAlert('success')
             props.onAddUser(user)
@@ -49,8 +53,7 @@ export default function UserForm(props) {
     }   
 
   return (
-    <div>
-
+    <Wrapper>
             {
                 alert === 'send a warning' 
                 ? 
@@ -74,12 +77,16 @@ export default function UserForm(props) {
                         id="name" 
                         label="Name" 
                         variant="outlined"
-                        onChange={handleName}/>
+                        onChange={handleName}
+                        value={newName}
+                        />
                         <TextField 
                         id="age" 
                         label="Age" 
+                        type="number"
                         variant="outlined" 
                         onChange={handleAge}
+                        value={newAge}
                         />
                         <Button type="submit" variant="outlined">Create New User</Button>
                     </Box>
@@ -103,16 +110,19 @@ export default function UserForm(props) {
                     id="name" 
                     label="Name" 
                     variant="outlined"
-                    onChange={handleName}/>
+                    onChange={handleName}
+                    value={newName}
+                    />
                     <TextField 
                     id="age" 
                     label="Age" 
                     variant="outlined" 
                     onChange={handleAge}
+                    value={newAge}
                     />
                     <Button type="submit" variant="outlined">Create New User</Button>
                 </Box>    
             }
-    </div>
+    </Wrapper>
   )
 }
