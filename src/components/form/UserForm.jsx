@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button'
 import AlertMessage from '../alerts/AlertMessage';
+import  Wrapper from '../helpers/Wrapper'
 
 export default function UserForm(props) {
 
@@ -52,8 +53,7 @@ export default function UserForm(props) {
     }   
 
   return (
-    <div>
-
+    <Wrapper>
             {
                 alert === 'send a warning' 
                 ? 
@@ -123,6 +123,6 @@ export default function UserForm(props) {
                     <Button type="submit" variant="outlined">Create New User</Button>
                 </Box>    
             }
-    </div>
+    </Wrapper>
   )
 }

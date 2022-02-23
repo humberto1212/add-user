@@ -1,9 +1,10 @@
 import React from 'react'
 import User from './User'
+import Wrapper from '../helpers/Wrapper'
 
 export default function UserList(props) {
   return (
-    <div>
+    <Wrapper>
       {
         props.onUsersList.map((user) => {
           return (
@@ -14,6 +15,6 @@ export default function UserList(props) {
           )
         })
       }
-    </div>
+    </Wrapper>
   )
 }

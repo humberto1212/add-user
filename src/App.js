@@ -4,6 +4,7 @@ import UserList from './components/user/UserList'
 import UserForm from './components/form/UserForm'
 import {theme} from './theme/theme'
 import {ThemeProvider} from '@mui/material/styles';
+import Wrapper from '../src/components/helpers/Wrapper'
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div >
+      <Wrapper>
         <UserForm
           onAddUser={addUser}
         />
@@ -32,7 +33,7 @@ function App() {
           onUsersList={usersList}
           onHandleDelete={handleDelete}
         /> 
-      </div>
+      </Wrapper>
     </ThemeProvider>
   );
 }
