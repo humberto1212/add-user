@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button'
@@ -6,14 +6,18 @@ import AlertMessage from '../alerts/AlertMessage';
 import  Wrapper from '../helpers/Wrapper'
 
 export default function UserForm(props) {
+    //for imput name Im using useRef() and not states, just to try
+    const nameInputRef = useRef();
+    const ageInputRef = useRef();
 
-    const [newName, setNewName] = useState('')
+
+    //const [newName, setNewName] = useState('')
     const [newAge, setNewAge] = useState('')
     const [alert, setAlert] = useState('')
   
-    const handleName = (event) => {
-        return setNewName(event.target.value)
-    }
+    // const handleName = (event) => {
+    //     return setNewName(event.target.value)
+    // }
 
     const handleAge = (event) => {
         return setNewAge(event.target.value) 
@@ -21,6 +25,8 @@ export default function UserForm(props) {
     
     const handleSubmit = (event) => {
         event.preventDefault()
+        console.log('this is nameInputRef', nameInputRef.current.value)
+        console.log('this is nameInputRef', ageInputRef.current)
 
         let guid = () => {
             let s4 = () => {
@@ -33,12 +39,12 @@ export default function UserForm(props) {
         }
 
         let user = {
-            name: newName,
+            name: nameInputRef.current.value,
             age: newAge,
             id: guid()
         }
 
-        if(user.name === '' || user.age === ''){
+        if(nameInputRef.current.value  === '' || user.age === ''){
             setAlert('send a warning')
             return false
         }else if(+user.age <= 0){
@@ -48,8 +54,10 @@ export default function UserForm(props) {
             setAlert('success')
             props.onAddUser(user)
         }
+
         setNewAge('')
-        setNewName('')
+         //manipulation of the Dom with useRef.
+         nameInputRef.current.value = ''
     }   
 
   return (
@@ -77,8 +85,7 @@ export default function UserForm(props) {
                         id="name" 
                         label="Name" 
                         variant="outlined"
-                        onChange={handleName}
-                        value={newName}
+                        inputRef={nameInputRef}
                         />
                         <TextField 
                         id="age" 
@@ -87,6 +94,7 @@ export default function UserForm(props) {
                         variant="outlined" 
                         onChange={handleAge}
                         value={newAge}
+                        inputRef={ageInputRef}
                         />
                         <Button type="submit" variant="outlined">Create New User</Button>
                     </Box>
@@ -110,8 +118,7 @@ export default function UserForm(props) {
                     id="name" 
                     label="Name" 
                     variant="outlined"
-                    onChange={handleName}
-                    value={newName}
+                    inputRef={nameInputRef}
                     />
                     <TextField 
                     id="age" 
@@ -119,6 +126,7 @@ export default function UserForm(props) {
                     variant="outlined" 
                     onChange={handleAge}
                     value={newAge}
+                    inputRef={ageInputRef}
                     />
                     <Button type="submit" variant="outlined">Create New User</Button>
                 </Box>    
